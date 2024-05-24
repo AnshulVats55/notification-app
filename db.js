@@ -2,64 +2,7 @@ import axios from "axios";
 import dotenv from "dotenv";
 dotenv.config();
 
-const sendNotification = async () => {
-  //   const url = `https://onesignal.com/api/v1/notifications?app_id=${app_id}`;
-  //   const data = {
-  //     included_segments: ["Subscribed Users"],
-  //     contents: {
-  //       en: "NodeJS 1",
-  //     },
-  //     include_aliases: {
-  //       onesignal_id: ["2d4e9a8f-e53a-4e01-8764-3ad5bbb4cea9"],
-  //     },
-  //     
-  //   };target_channel: "push",
-
-  //   const headers = {
-  //     Authorization: `Basic ${api_key}`,
-  //     Accept: "application/json",
-  //     "Content-Type": "application/json",
-  //     referrerPolicy: "no-referrer",
-  //     mode: "no-mode",
-  //     "Access-Control-Allow-Origin": "*",
-  //   };
-
-  //   try {
-  //     const response = await axios.post(url, data, { headers });
-  //     console.log("Notification sent successfully:", response.data);
-  //   } catch (error) {
-  //     console.error(
-  //       "Error sending notification:",
-  //       error.response ? error.response.data : error.message
-  //     );
-  //   }
-  // const options = {
-  //   method: "POST",
-  //   url: "https://onesignal.com/api/v1/notifications",
-  //   params: { "": "", app_id: "e4a9b913-d9a6-44b5-aac9-4ae022e599d4" },
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //     Authorization: "Basic MmEwNDc3ZWEtYjJhMC00MjBhLTk4ZjctMzY2MzM5MmM5N2Iw",
-  //   },
-  //   data: {
-  //     included_segments: ["Subscribed Users"],
-  //     contents: { en: "It is time to book meal" },
-  //     include_aliases: {
-  //       onesignal_id: ["77feae12-024f-482c-94b1-463393662d8d"],
-  //     },
-  //     target_channel: "push",
-  //   },
-  // };
-
-  // axios
-  //   .request(options)
-  //   .then(function (response) {
-  //     console.log(response.data);
-  //   })
-  //   .catch(function (error) {
-  //     console.error(error);
-  //   });
-
+export const sendNotification = (request, response) => {
   const options = {
     method: "POST",
     url: "https://onesignal.com/api/v1/notifications?",
@@ -83,12 +26,10 @@ const sendNotification = async () => {
 
   axios
     .request(options)
-    .then(function (response) {
-      console.log(response.data);
+    .then((res) => {
+      response.send(res.data);
     })
     .catch(function (error) {
-      console.error(error);
+      response.send(400).json({ fail: error });
     });
 };
-
-await sendNotification();
