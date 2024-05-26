@@ -6,25 +6,17 @@ export const sendNotification = (request, response) => {
   const options = {
     method: "POST",
     url: "https://onesignal.com/api/v1/notifications",
-    params: { app_id: "e4a9b913-d9a6-44b5-aac9-4ae022e599d4" },
+    params: { app_id: "af11bec5-a1fb-4416-a259-cd9e4d16d626" },
     headers: {
-      Authorization: "Basic MmEwNDc3ZWEtYjJhMC00MjBhLTk4ZjctMzY2MzM5MmM5N2Iw",
+      Authorization: "Basic NjU5YTQxODQtN2E2ZS00MWIyLThjYWUtNWE2ZTAyNDMzMDMx",
     },
     data: {
       included_segments: ["Subscribed Users"],
-      contents: { en: "Notification from NodeJS" },
+      contents: { en: "New notification from NodeJS" },
       include_aliases: {
-        onesignal_id: ["77feae12-024f-482c-94b1-463393662d8d"],
+        onesignal_id: ["c25979cc-2728-4363-862a-25c64cc64b42"],
       },
-      target_channel: [
-        "AndroidPush",
-        "WindowsPush",
-        "iOSPush",
-        "ChromePush",
-        "FirefoxPush",
-        "SafariPush",
-        "macOSPush",
-      ],
+      target_channel: "push",
     },
   };
 
